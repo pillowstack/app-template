@@ -126,18 +126,18 @@ onMounted(getDevice);
 
 ## 💻 Available Scripts
 
-| Command                    | Description                               |
-| -------------------------- | ----------------------------------------- |
-| `npm run dev`              | Start development server with hot reload |
-| `npm run build`            | Build and minify for production          |
-| `npm run preview`          | Preview the production build locally     |
-| `npm test`                 | Run unit and E2E tests                   |
-| `npm run test:unit`        | Run unit tests with Vitest               |
-| `npm run test:e2e`         | Run end-to-end tests with Playwright     |
-| `npm run lint`             | Lint and fix code with ESLint            |
-| `npm run format`           | Format code with Prettier                |
-| `npm run type-check`       | Check TypeScript types                   |
-| `npm run i18n:sync`        | Sync translation files                   |
+| Command              | Description                              |
+| -------------------- | ---------------------------------------- |
+| `npm run dev`        | Start development server with hot reload |
+| `npm run build`      | Build and minify for production          |
+| `npm run preview`    | Preview the production build locally     |
+| `npm test`           | Run unit and E2E tests                   |
+| `npm run test:unit`  | Run unit tests with Vitest               |
+| `npm run test:e2e`   | Run end-to-end tests with Playwright     |
+| `npm run lint`       | Lint and fix code with ESLint            |
+| `npm run format`     | Format code with Prettier                |
+| `npm run type-check` | Check TypeScript types                   |
+| `npm run i18n:sync`  | Sync translation files                   |
 
 ---
 
