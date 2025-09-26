@@ -1,24 +1,38 @@
-# 🌥️ App Template
+# App Template
 
-> Project Status: Maintenance Mode
-
-This repository is in maintenance mode. We accept critical bug fixes, security patches, and CI/docs chores only. Feature requests are not in scope. To report a bug, please open a GitHub issue using the Bug Report template and review support expectations in SUPPORT.md.
+**Hybrid mobile app template using Vue 3, Vite, Capacitor and more**
 
 [View Support Policy](SUPPORT.md) · [Security Policy](SECURITY.md)
 
-> App Template is the official web interface for the **Pillowstack** ecosystem — built with **Vue 3** and **Vite**, optimized for speed, modularity, and scalability. Now with ready-to-use mobile app integration via **Capacitor**.
+---
+
+## 🚀 About This Template
+
+App Template is a modern hybrid mobile app template built with Vue 3, Vite, and Capacitor. It provides a solid foundation for building cross-platform applications with web technologies while maintaining native mobile app capabilities.
+
+This template is designed to be:
+
+- ⚡ **Fast** - Ultra-fast development with Vite and hot reload
+- 🎨 **Modern** - Vue 3 + TypeScript with strict typing
+- 📱 **Hybrid** - Deploy as web app or mobile app (iOS/Android)
+- 🧩 **Modular** - Clean architecture that scales easily
+- 🛡️ **Quality-focused** - ESLint, Prettier, Vitest, and Playwright
+- 🔒 **Secure** - Designed for private use and secure deployment
 
 ---
 
 ## 📦 Features
 
-- ⚡ **Vite** for ultra-fast development.
-- 🎨 **Vue 3 + TypeScript** with strict typing.
-- 📱 **Capacitor** to package as a mobile app (iOS/Android).
-- 🧩 Modular architecture to scale easily.
-- 🛡️ **ESLint + Prettier** for clean and consistent code.
-- ✅ **Vitest** and **Playwright** for unit and E2E tests.
-- 🔒 Designed for private use and secure deployment.
+- ⚡ **Vite** for ultra-fast development
+- 🎨 **Vue 3 + TypeScript** with strict typing
+- 📱 **Capacitor** to package as a mobile app (iOS/Android)
+- 🧩 Modular architecture to scale easily
+- 🛡️ **ESLint + Prettier** for clean and consistent code
+- ✅ **Vitest** and **Playwright** for unit and E2E tests
+- 🌐 **Vue I18n** for internationalization
+- 🔐 **Apple Sign In** integration ready
+- 📊 **Sentry** error tracking integration
+- 🎯 **Pinia** for state management
 
 ---
 
@@ -26,48 +40,60 @@ This repository is in maintenance mode. We accept critical bug fixes, security p
 
 - **Node.js** `>=20`
 - **npm** `>=9` (or **pnpm/yarn**)
-- **Capacitor** (`@capacitor/core`, `@capacitor/cli`) for mobile integration.
+- **Capacitor CLI** for mobile integration
 
 ---
 
-## 🚀 Installation
+## 🚀 Quick Start
 
 ```sh
+# Install dependencies
 npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
 ```
 
 ---
 
-## 📱 Capacitor Integration
+## 📱 Mobile Development
 
-1. **Install Capacitor**
-   ```sh
-   npm install @capacitor/core @capacitor/cli
-   ```
-2. **Initialize Capacitor**
-   ```sh
-   npx cap init vasa.app-dev me.vasa.app-dev
-   ```
-3. **Add platforms**
-   ```sh
-   npx cap add android
-   npx cap add ios
-   ```
-4. **Build the web app**
-   ```sh
-   npm run build
-   ```
-5. **Sync files**
-   ```sh
-   npx cap sync
-   ```
-6. **Open in Android Studio or Xcode**
-   ```sh
-   npx cap open android
-   npx cap open ios
-   ```
+### Initial Setup
 
-### Example of using Capacitor in Vue
+```sh
+# Build the web app
+npm run build
+
+# Sync files with Capacitor
+npx cap sync ios
+
+# Install iOS dependencies
+npm run "6. Pods"
+```
+
+### Development Workflow
+
+```sh
+# 1. Clean previous builds
+npm run "1. Clean"
+
+# 2. Build the app
+npm run "2. Build"
+
+# 3. Sync with Capacitor
+npm run "3. Sync"
+
+# 4. Install pod dependencies
+npm run "6. Pods"
+```
+
+### Example: Using Capacitor in Vue
 
 ```ts
 // src/composables/useDevice.ts
@@ -87,8 +113,10 @@ export function useDeviceInfo() {
 <script setup lang="ts">
 import { useDeviceInfo } from "@/composables/useDevice";
 const { device, getDevice } = useDeviceInfo();
+
 onMounted(getDevice);
 </script>
+
 <template>
   <pre>{{ device }}</pre>
 </template>
@@ -100,15 +128,16 @@ onMounted(getDevice);
 
 | Command                    | Description                               |
 | -------------------------- | ----------------------------------------- |
-| `npm run dev`              | Start development server with hot reload. |
-| `npm run build`            | Build and minify for production.          |
-| `npm run preview`          | Preview the production build locally.     |
-| `npm test`                 | Run unit tests with coverage (alias).     |
-| `npm run test:unit`        | Run unit tests with coverage (Vitest).    |
-| `npm run test:e2e`         | Run end-to-end tests with Playwright.     |
-| `npm run lint`             | Lint and fix code with ESLint.            |
-| `npx cap sync`             | Sync the web app with Capacitor.          |
-| `npx cap open android/ios` | Open in the corresponding IDE.            |
+| `npm run dev`              | Start development server with hot reload |
+| `npm run build`            | Build and minify for production          |
+| `npm run preview`          | Preview the production build locally     |
+| `npm test`                 | Run unit and E2E tests                   |
+| `npm run test:unit`        | Run unit tests with Vitest               |
+| `npm run test:e2e`         | Run end-to-end tests with Playwright     |
+| `npm run lint`             | Lint and fix code with ESLint            |
+| `npm run format`           | Format code with Prettier                |
+| `npm run type-check`       | Check TypeScript types                   |
+| `npm run i18n:sync`        | Sync translation files                   |
 
 ---
 
@@ -120,107 +149,117 @@ onMounted(getDevice);
 npm run test:unit
 ```
 
-Generates coverage reports in `coverage/` (HTML, text, lcov). Open `coverage/index.html` locally to inspect detailed file coverage, or consume `coverage/lcov.info` in external tools.
+Generates coverage reports in `coverage/`. Open `coverage/index.html` to inspect detailed coverage.
 
-### End-to-End (Playwright)
+### End-to-End Tests (Playwright)
 
 ```sh
-npx playwright install # first run only
-npm run build
+# Install browsers (first run only)
+npx playwright install
+
+# Run E2E tests
 npm run test:e2e
-```
 
-Options:
-
-```sh
+# Run specific browser
 npm run test:e2e -- --project=chromium
-npm run test:e2e -- tests/example.spec.ts
+
+# Debug mode
 npm run test:e2e -- --debug
 ```
 
 ---
 
-## 🔐 Environment Variables and Secrets (GitHub Actions)
+## 🔐 Environment Configuration
 
-This project uses Vite and reads variables with the `VITE_*` prefix on the client (`import.meta.env.*`) and `process.env.*` during build/configuration. In CI, these variables must be defined as GitHub Action Secrets.
+This project uses environment variables for configuration. Create a `.env.local` file for local development:
 
-### Required/Optional Variables
+### Required Variables
 
-- VITE_APP_NAME: Application name. Required. Also used by Capacitor.
-- VITE_APP_VERSION: App version (semver). Required.
-- VITE_APP_ENV: Environment (`development` | `staging` | `production`). Required.
-- VITE_API_URL: Base API URL (https). Required.
-- VITE_API_WS_URI: API WebSocket URL (wss). Required.
-- VITE_APPLE_TEAM_ID: Apple Developer Team ID. Required.
-- VITE_APPLE_BUNDLE_ID: App Bundle ID. Required.
-- VITE_APPLE_SERVICE_ID: Service ID for Sign in with Apple (web). Required for web login.
-- VITE_APPLE_REDIRECT_URI: Redirect URI configured in the backend/Apple. Required.
-- VITE_APPLE_SCOPE: Requested scopes (e.g., `name email`). Required.
-- VITE_SENTRY_DSN: Sentry DSN for runtime client errors. Optional but recommended in production.
-- SENTRY_ORG: Sentry organization. Required if uploading sourcemaps in CI.
-- SENTRY_PROJECT: Sentry project. Required if uploading sourcemaps in CI.
-- SENTRY_AUTH_TOKEN: Sentry token for uploading sourcemaps (typical scopes: `project:write`, `org:read`). Required if uploading sourcemaps in CI.
-- SERVER_ORIGIN: Public origin used by the dev/preview server. Optional.
-- SERVER_ALLOWED_HOSTS: Comma-separated list of allowed hosts. Optional.
-- PKG_GH_READ: GitHub token with `read:packages` (and `repo` if applicable). Used by CI to authenticate `npm ci` against GitHub Packages (injected as `NODE_AUTH_TOKEN`).
-- GITHUB_TOKEN: Automatically provided by GitHub Actions (no configuration required). Used by the PR title verification workflow.
+- `VITE_APP_NAME`: Application name
+- `VITE_APP_VERSION`: App version (semver)
+- `VITE_APP_ENV`: Environment (`development` | `staging` | `production`)
+- `VITE_API_URL`: Base API URL (https)
+- `VITE_API_WS_URI`: API WebSocket URL (wss)
 
-Usage Notes:
+### Apple Sign In (Required for authentication)
 
-- The Sentry plugin in `vite.config.ts` runs during `build` and requires `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, and `SENTRY_PROJECT` to upload sourcemaps. If Sentry is not needed in CI, configure these secrets anyway (with valid values) or adapt the pipeline outside of maintenance.
-- The Vite server uses `VITE_SERVER_*` only in development/preview; they are optional for build.
+- `VITE_APPLE_TEAM_ID`: Apple Developer Team ID
+- `VITE_APPLE_BUNDLE_ID`: App Bundle ID
+- `VITE_APPLE_SERVICE_ID`: Service ID for Sign in with Apple
+- `VITE_APPLE_REDIRECT_URI`: Redirect URI
+- `VITE_APPLE_SCOPE`: Requested scopes (e.g., `name email`)
 
-### How to Configure GitHub Action Secrets
+### Optional Variables
 
-Option A — from the web interface:
+- `VITE_SENTRY_DSN`: Sentry DSN for error tracking
+- `SENTRY_ORG`: Sentry organization (for CI sourcemap upload)
+- `SENTRY_PROJECT`: Sentry project (for CI sourcemap upload)
+- `SENTRY_AUTH_TOKEN`: Sentry authentication token (for CI)
 
-- Repository Settings → Secrets and variables → Actions → New repository secret → add each key above with its value.
+### GitHub Actions Secrets
 
-Option B — with GitHub CLI (`gh`):
-
-- Run these commands from the repo root, replacing the example values with your own.
+For CI/CD, configure these secrets in your GitHub repository:
 
 ```sh
-# Netlify
-gh secret set NETLIFY_AUTH_TOKEN --body "<body>"
-gh secret set NETLIFY_SITE_ID --body "<body>"
-
-# Sentry
-gh secret set SENTRY_AUTH_TOKEN --body "<body>"
-gh secret set SENTRY_ORG --body "<body>"
-gh secret set SENTRY_PROJECT --body "<body>"
-
-# GitHub Packages (CI)
-# GH PAT with scope read:packages (workflow injects it as NODE_AUTH_TOKEN)
-gh secret set PKG_GH_READ --body "ghp_..."
+# Using GitHub CLI
+gh secret set NETLIFY_AUTH_TOKEN --body "<token>"
+gh secret set NETLIFY_SITE_ID --body "<site-id>"
+gh secret set SENTRY_AUTH_TOKEN --body "<token>"
+gh secret set PKG_GH_READ --body "<github-token>"
 ```
 
 ---
 
-## 📂 Project structure
+## 📂 Project Structure
 
 ```plaintext
 app-template/
- ├─ public/          # Static assets
- ├─ src/
- │   ├─ assets/      # Images, global styles
- │   ├─ components/  # Reusable components
- │   ├─ composables/ # Reusable logic
- │   ├─ router/      # Route configuration
- │   ├─ store/       # Global state
- │   ├─ views/       # Main views
- │   └─ main.ts      # Entry point
- ├─ tests/           # Unit and e2e tests
- ├─ capacitor.config.ts # Capacitor configuration
- └─ vite.config.ts   # Vite configuration
+├─ public/              # Static assets
+├─ src/
+│   ├─ components/      # Reusable Vue components
+│   ├─ composables/     # Reusable composition functions
+│   ├─ config/          # Configuration files
+│   ├─ languages/       # i18n translation files
+│   ├─ middleware/      # Route middleware
+│   ├─ router/          # Vue Router configuration
+│   ├─ services/        # API and external services
+│   ├─ stores/          # Pinia stores
+│   ├─ styles/          # Global SCSS styles
+│   ├─ utils/           # Utility functions
+│   ├─ views/           # Main application views
+│   └─ main.ts          # Application entry point
+├─ e2e/                 # Playwright E2E tests
+├─ ios/                 # iOS Capacitor project
+├─ scripts/             # Build and utility scripts
+└─ capacitor.config.ts  # Capacitor configuration
 ```
 
 ---
 
-## 📜 License
+## 🔹 Related Templates
 
-Private — All rights reserved.
+- [**backend-template**](https://github.com/pillowstack/backend-template) - Minimal, opinionated starter kit for modern Node.js backends
+- [**shared-template**](https://github.com/pillowstack/shared-template) - Shared styles and types for web and mobile projects
+- [**landing-template**](https://github.com/pillowstack/landing-template) - Vite-based landing page template with GitHub Pages deploy
+- [**design-template**](https://github.com/pillowstack/design-template) - Design system scaffold with SCSS, linting, formatting, and CI
 
 ---
 
-❤️ Made with care by **Vasa**
+## 🤝 Contributing
+
+We welcome contributions to any of our repositories! Check each project's README and CONTRIBUTING.md for specific guidelines.
+
+## 📫 Contact
+
+- Discussions: [Pillowstack](https://github.com/pillowstack/.github/discussions)
+- GitHub: [@pillowstack](https://github.com/pillowstack)
+- Website: [pillowstack.dev](https://pillowstack.dev) <!-- ✅ Verified as accessible and properly configured as of 2025-06 -->
+  <!-- Maintainers: If updating this URL, please verify accessibility and configuration before publishing. -->
+
+---
+
+<div align="center">
+
+**© 2025 Pillowstack**
+
+</div>

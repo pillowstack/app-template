@@ -5,7 +5,7 @@
 **Name:** @pillowstack/app-template  
 **Version:** 0.1.0  
 **Description:** Frontend application developed with Vue.js, Vite and Pinia  
-**Status:** Maintenance Mode  
+**Status:** Active Development  
 **Type:** Private application from Pillowstack ecosystem
 
 ## 🏗️ Technical Architecture
@@ -133,13 +133,6 @@ src/
 - **SENTRY_ORG/PROJECT:** Sentry configuration
 
 ## 🔄 Project Status
-
-### Maintenance Mode
-
-- **Policy:** Only critical fixes and security patches accepted
-- **Scope:** No new features accepted
-- **Support Policy:** Defined in SUPPORT.md
-- **Security Policy:** Defined in SECURITY.md
 
 ### CI/CD Flow
 

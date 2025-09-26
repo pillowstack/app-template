@@ -8,9 +8,9 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ### Docs
 
-- Add maintenance status notice to README.
-- Add SECURITY.md and SUPPORT.md with policies.
-- Update AGENTS.md with maintenance mode, support policy, cadence, dependency policy, backport policy, and change control.
+- Remove maintenance mode notices and policies; update README.
+- Update SUPPORT.md for active development.
+- Revise AGENTS.md to reflect active status and policies.
 
 ### CI
 

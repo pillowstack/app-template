@@ -1,28 +1,27 @@
-# Repository Status: Maintenance Mode
+# Repository Status: Active Development
 
-Only critical bug fixes, security patches, and CI/docs chores are accepted. No new features are planned. Use the existing npm scripts and CI commands for linting and formatting, and follow the support and security policies below.
+This project is under active development. Use the existing npm scripts and CI commands for linting and formatting, and follow the support and security policies below.
 
 ## Support & Issue Policy
 
-- Scope: bug reports and security issues only.
-- Use: GitHub Bug Report template to file issues.
+- Scope: bug reports, feature requests, and security issues.
+- Use: GitHub issue templates to file issues.
 - Response: triage within 3–5 business days.
-- Out of scope: new features and large refactors.
+- Notes: large refactors may be split into incremental changes.
 
 ## Release Cadence
 
-- Ad hoc patch releases for critical fixes only.
-- No scheduled feature releases in maintenance mode.
+- Patch/minor releases as needed.
+- Features released on an as-ready basis.
 
 ## Dependency Policy
 
 - Dependabot manages weekly npm updates (security, patch/minor).
-- No interactive upgrades here; land low-risk updates with CI green.
+- Land updates with CI green; perform larger upgrades as needed with care.
 
 ## Backport Policy
 
-- Backports are generally not performed; fixes target the default branch.
-- Exception only for severe security issues as capacity allows.
+- Fixes target the default branch; backports considered case-by-case for critical issues.
 
 ## Change Control
 

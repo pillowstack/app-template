@@ -1,6 +1,6 @@
 # Support Policy
 
-- Scope: maintenance mode — critical bug fixes, security patches, and CI/docs chores only.
-- How to file: open a GitHub issue using the Bug Report template.
+- Scope: bug reports, feature requests, and security issues are welcome.
+- How to file: open a GitHub issue using the appropriate template.
 - Response times: triage within 3–5 business days; resolution depends on severity and maintainer availability.
-- Out of scope: new features, large refactors, and non-critical enhancements.
+- Notes: large refactors or broad changes may be split into smaller PRs for reviewability.

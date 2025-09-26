@@ -1,9 +1,11 @@
 # Security Policy
 
-## Reporting a Vulnerability
+## Vulnerability reporting
 
-- Supported versions: the current default branch is supported for security updates.
-- Disclosure: report vulnerabilities privately via GitHub Security Advisories or sending email at **security@vasa.me** with the subject line "Vulnerability Report: [Project Name]".
+Please do not open a public issue. Instead:
+
+1. Use GitHub Security Advisories (Security > Advisories) if available in the repository
+2. Alternatively, please email us at **mail@pillowstack.dev** with the subject line "Vulnerability Report: [Project Name]"
 
 Please include as much detail as possible, including:
 
@@ -12,4 +14,4 @@ Please include as much detail as possible, including:
 - Potential impact
 - Any relevant logs or screenshots
 
-Please do not disclose vulnerabilities publicly until a fix or mitigation is available.
+We appreciate responsible disclosures.
