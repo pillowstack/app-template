@@ -3,8 +3,8 @@
 @use "@/styles/variables";
 
 @mixin safe-area-padding {
-  padding: calc(variables.$grid * 2 + env(safe-area-inset-top))
-    calc(variables.$grid * 2 + env(safe-area-inset-right))
-    calc(variables.$grid * 2 + env(safe-area-inset-bottom))
-    calc(variables.$grid * 2 + env(safe-area-inset-left));
+  $grid2: variables.$grid * 2;
+
+  padding: #{calc($grid2 + env(safe-area-inset-top))} #{calc($grid2 + env(safe-area-inset-right))}
+    #{calc($grid2 + env(safe-area-inset-bottom))} #{calc($grid2 + env(safe-area-inset-left))};
 }
