@@ -1,0 +1,37 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+build
+*.min.js
+*.bundle.js
+
+# IDE and editor files
+.idea
+.vscode
+
+# Git hooks
+.husky
+
+# Coverage reports
+coverage
+.nyc_output
+
+# Logs
+*.log
+logs
+
+# Package files
+package-lock.json
+yarn.lock
+
+# OS files
+.DS_Store
+
+# Temporary files
+tmp
+temp
+
+# Capacitor
+ios

@@ -1,0 +1,54 @@
+name: Bug report
+description: Report a reproducible problem
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill this out. Please search existing issues first.
+  - type: input
+    id: summary
+    attributes:
+      label: Summary
+      description: Briefly describe the issue
+      placeholder: e.g., Crash on startup when...
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide clear, minimal steps
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Node version, OS, tool versions
+      placeholder: |
+        Node: v20.x
+        OS: macOS/Linux/Windows
+        Package manager: npm x.y.z
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Paste relevant logs or stack traces
+      render: shell

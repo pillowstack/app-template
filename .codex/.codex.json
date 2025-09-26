@@ -1,0 +1,13 @@
+{
+  "branching": {
+    "prefix": "codex/",
+    "create_new_branch": true,
+    "commit": false,
+    "push": false
+  },
+  "rules": [
+    "Always read and summarize repository configuration (.codex/.codex.json, AGENTS.md, package.json scripts, .editorconfig) before editing or running non-read commands.",
+    "Do not start editing until you share the summary and the plan.",
+    "Always write comments, commit messages, PR descriptions, and documentation in English."
+  ]
+}

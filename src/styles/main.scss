@@ -1,0 +1,30 @@
+@use "@pillowstack/shared-template/styles/reset" as *;
+@use "@pillowstack/shared-template/styles/root" as *;
+@use "@pillowstack/shared-template/styles/colors/increased-contrast-dark" as *;
+@use "@pillowstack/shared-template/styles/colors/increased-contrast-light" as *;
+@use "@/styles/variables";
+@use "@/styles/mixins";
+@use "@/styles/type";
+
+body {
+  background-color: var(--rgba-background);
+  color: var(--rgba-text);
+}
+
+.top-right-cta {
+  top: variables.$grid * 2;
+  right: variables.$grid * 2;
+  position: absolute;
+}
+
+.safe-area {
+  @include mixins.no-select;
+  @include mixins.no-drag;
+  @include mixins.safe-area-padding;
+}
+
+.view-title {
+  @extend %type-large-title;
+
+  margin-bottom: variables.$grid * 2;
+}

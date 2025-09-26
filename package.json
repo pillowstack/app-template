@@ -1,0 +1,103 @@
+{
+  "name": "@pillowstack/app-template",
+  "version": "1.2.0",
+  "description": "Hybrid mobile app template using Vue 3, Vite, Capacitor and more",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "1. Clean": "rm -rf dist",
+    "2. Build": "npm run build",
+    "3. Sync": "npx cap sync ios",
+    "6. Pods": "chmod +x script/pod-install.sh && script/pod-install.sh",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "build-only": "vite build",
+    "clean:all": "rm -rf dist node_modules playwright-report test-results && rm package-lock.json",
+    "clean:cache": "npm cache clean --force && npm cache verify",
+    "clean:install": "npm run clean:all && npm run clean:cache && npm install",
+    "dev": "vite",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "i18n:sync:dry": "node --experimental-strip-types scripts/i18n-sync.ts",
+    "i18n:sync": "node --experimental-strip-types scripts/i18n-sync.ts --apply",
+    "lint": "eslint src --fix",
+    "lint:fix": "npm run lint",
+    "lint:style": "stylelint \"**/*.{vue,scss,css}\" --fix",
+    "prepare": "husky",
+    "preview": "vite preview",
+    "test:e2e": "CI=1 playwright test",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "vitest --run",
+    "test:coverage": "vitest --run --coverage",
+    "type-check": "vue-tsc --build"
+  },
+  "dependencies": {
+    "@capacitor-community/apple-sign-in": "^7.0.1",
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/ios": "^7.4.3",
+    "@pillowstack/shared-template": "^1.0.0",
+    "@sentry/vite-plugin": "^4.3.0",
+    "@sentry/vue": "^10.15.0",
+    "axios": "^1.12.2",
+    "lucide-vue-next": "^0.544.0",
+    "pinia": "^3.0.3",
+    "vue": "^3.5.22",
+    "vue-i18n": "^11.1.12",
+    "vue-router": "^4.5.1",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "@tsconfig/node22": "^22.0.2",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^24.5.2",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vitejs/plugin-vue-jsx": "^5.1.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/eslint-plugin": "^1.3.13",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.6.0",
+    "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.8.1",
+    "depcheck": "^1.4.7",
+    "eslint": "^9.36.0",
+    "eslint-plugin-playwright": "^2.2.2",
+    "eslint-plugin-vue": "~10.5.0",
+    "husky": "^9.1.7",
+    "jiti": "^2.6.0",
+    "jsdom": "^27.0.0",
+    "lint-staged": "^16.2.1",
+    "npm-run-all2": "^8.0.4",
+    "postcss": "^8.5.6",
+    "postcss-html": "^1.8.0",
+    "postcss-scss": "^4.0.9",
+    "prettier": "3.6.2",
+    "sass": "^1.93.2",
+    "sass-loader": "^16.0.5",
+    "stylelint": "^16.24.0",
+    "stylelint-config-recommended-vue": "^1.6.1",
+    "stylelint-config-standard": "^39.0.0",
+    "stylelint-scss": "^6.12.1",
+    "typescript": "~5.9.2",
+    "vite": "^7.1.7",
+    "vite-plugin-vue-devtools": "^8.0.2",
+    "vitest": "^3.2.4",
+    "vue-tsc": "^3.0.8"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "lint-staged": {
+    "*.{ts,vue}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{scss,css}": [
+      "prettier --write",
+      "stylelint --fix"
+    ]
+  },
+  "changelog": {
+    "1.0.0": "Initial release"
+  }
+}

@@ -1,0 +1,59 @@
+name: Deploy release to Netlify
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  packages: read
+  deployments: write
+
+concurrency:
+  group: netlify-release-${{ github.event.release.tag_name }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy Job
+    environment: production
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PKG_GH_READ }}
+
+      - name: Build (uploads sourcemaps via Sentry Vite Plugin)
+        run: npm run build
+        env:
+          # Build-time env para Vite
+          VITE_APPLE_TEAM_ID: ${{ vars.VITE_APPLE_TEAM_ID }}
+          VITE_APPLE_BUNDLE_ID: ${{ vars.VITE_APPLE_BUNDLE_ID }}
+          VITE_APPLE_SERVICE_ID: ${{ vars.VITE_APPLE_SERVICE_ID }}
+          VITE_APPLE_REDIRECT_URI: ${{ vars.VITE_APPLE_REDIRECT_URI }}
+          VITE_APPLE_SCOPE: ${{ vars.VITE_APPLE_SCOPE }}
+          # Sentry y Node
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ vars.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ vars.SENTRY_PROJECT }}
+          SENTRY_RELEASE: ${{ github.event.release.tag_name }}
+
+      - name: Deploy to Netlify (no build, no UI overrides)
+        run: |
+          npx -y netlify-cli@17 deploy \
+            --prod \
+            --dir=dist \
+            --site "${{ secrets.NETLIFY_SITE_ID }}" \
+            --auth "${{ secrets.NETLIFY_AUTH_TOKEN }}" \
+            --message "Release ${{ github.event.release.tag_name }}"
