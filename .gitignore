@@ -35,4 +35,4 @@ playwright-report/
 .env.sentry-build-plugin
 
 # Environment variables
-.env
+.env.local

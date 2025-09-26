@@ -1,5 +1,5 @@
 import { config } from "dotenv";
-config(); // Loads .env into process.env
+config(); // Loads .env.local into process.env
 
 import { z } from "zod";
 
